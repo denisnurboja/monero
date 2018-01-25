@@ -516,6 +516,9 @@ void slow_hash_free_state(void)
  * @param hash a pointer to a buffer in which the final 256 bit hash will be stored
  */
 
+#ifdef _MSC_VER
+__declspec(dllexport)
+#endif
 void cn_slow_hash(const void *data, size_t length, char *hash)
 {
     RDATA_ALIGN16 uint8_t expandedKey[240];  /* These buffers are aligned to use later with SSE functions */
@@ -845,6 +848,9 @@ STATIC INLINE void aes_pseudo_round_xor(const uint8_t *in, uint8_t *out, const u
 	}
 }
 
+#ifdef _MSC_VER
+__declspec(dllexport)
+#endif
 void cn_slow_hash(const void *data, size_t length, char *hash)
 {
     RDATA_ALIGN16 uint8_t expandedKey[240];
@@ -1039,6 +1045,9 @@ STATIC INLINE void xor_blocks(uint8_t* a, const uint8_t* b)
   U64(a)[1] ^= U64(b)[1];
 }
 
+#ifdef _MSC_VER
+__declspec(dllexport)
+#endif
 void cn_slow_hash(const void *data, size_t length, char *hash)
 {
     uint8_t text[INIT_SIZE_BYTE];
@@ -1210,6 +1219,9 @@ union cn_slow_hash_state {
 };
 #pragma pack(pop)
 
+#ifdef _MSC_VER
+__declspec(dllexport)
+#endif
 void cn_slow_hash(const void *data, size_t length, char *hash) {
   uint8_t long_state[MEMORY];
   union cn_slow_hash_state state;

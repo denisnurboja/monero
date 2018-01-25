@@ -78,7 +78,14 @@ enum {
   HASH_DATA_AREA = 136
 };
 
+#ifdef _MSC_VER
+__declspec(dllexport)
+#endif
 void cn_fast_hash(const void *data, size_t length, char *hash);
+
+#ifdef _MSC_VER
+__declspec(dllexport)
+#endif
 void cn_slow_hash(const void *data, size_t length, char *hash);
 
 void hash_extra_blake(const void *data, size_t length, char *hash);
