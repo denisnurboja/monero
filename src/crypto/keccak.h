@@ -15,6 +15,9 @@
 #define ROTL64(x, y) (((x) << (y)) | ((x) >> (64 - (y))))
 #endif
 
+#ifdef _MSC_VER
+__declspec(dllexport)
+#endif
 // compute a keccak hash (md) of given byte length from "in"
 void keccak(const uint8_t *in, size_t inlen, uint8_t *md, int mdlen);
 

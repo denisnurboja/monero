@@ -75,6 +75,9 @@ void keccakf(uint64_t st[25], int rounds)
 // compute a keccak hash (md) of given byte length from "in"
 typedef uint64_t state_t[25];
 
+#ifdef _MSC_VER
+__declspec(dllexport)
+#endif
 void keccak(const uint8_t *in, size_t inlen, uint8_t *md, int mdlen)
 {
     state_t st;
